@@ -1,12 +1,19 @@
 body {
-    background-color: #1e1e1e;    
+        background-color: #1e1e1e;    
 }
-hr {
-    background-color: darkolivegreen;
-    border-style: none;
-    height: 2px;
-    width: 95%;
-}
+
 img {
-    height: 100px;
+        height: 100px;
+}
+    
+hr {
+        background-color: darkolivegreen;
+        border-style: none;
+        height: 2px;
+        width: 95%;
+}
+
+h1{
+    color: azure;
+    font-family: 'Courier New', Courier, monospace;
 }
