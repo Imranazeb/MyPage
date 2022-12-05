@@ -5,11 +5,11 @@ body {
 
 #topsection {
         margin-left: 2%;
-         
+                         
 }
 
 .profilepic {
-        height: 100px;
+        height: 125px;
         
 }
 
@@ -29,7 +29,7 @@ hr {
 h1{
     color: azure;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 35px;
+    font-size: 40px;
            
 }
 
@@ -40,7 +40,30 @@ p{
     font-size: 20px;
     margin: 2% 3% 2% 3%;
     text-align: justify;
-    
-    
                    
+}
+
+.div_covid{
+        text-align: center;
+}
+
+.btn_covid{
+        font-family: 'Source Code pro','Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size: 20px;
+        height: 50px;
+        width: 200px;
+        border-radius: 5px;
+        background-color: #0e639c;
+        color: aliceblue;
+        cursor: pointer;
+        transition: background-color 0.5s;        
+}
+
+.btn_covid:hover{
+        background-color: #1d7ab8;
+}
+
+.btn_covid:active{
+        background-color: #154564;
 }
