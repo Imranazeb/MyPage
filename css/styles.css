@@ -15,7 +15,8 @@ body {
 
 .nametitle{
         margin-top: 0;
-        padding-bottom: 35px;
+        padding-bottom: 25px;
+        padding-left: 10px;
 }
 
 hr {
@@ -38,6 +39,7 @@ p{
     font-family: 'Source Code pro', 'Courier New', Courier, monospace;
     font-size: 20px;
     margin: 2% 3% 2% 3%;
+    text-align: justify;
     
     
                    
