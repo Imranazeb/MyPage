@@ -5,6 +5,7 @@ body {
 
 #topsection {
         margin-left: 2%;
+         
 }
 
 .profilepic {
@@ -35,7 +36,7 @@ p{
     color: #b5cea8;
     width: 95%;
     font-family: 'Source Code pro', 'Courier New', Courier, monospace;
-    font-size: 25px;
+    font-size: 20px;
     margin: 2% 3% 2% 3%;
     
     
