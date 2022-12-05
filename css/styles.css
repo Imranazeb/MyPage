@@ -27,7 +27,7 @@ hr {
 h1{
     color: azure;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 200%;
+    font-size: 35px;
            
 }
 
@@ -35,6 +35,7 @@ p{
     color: #b5cea8;
     width: 95%;
     font-family: 'Source Code pro', 'Courier New', Courier, monospace;
+    font-size: 25px;
     margin: 2% 3% 2% 3%;
     
     
