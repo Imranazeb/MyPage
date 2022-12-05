@@ -1,11 +1,22 @@
 body {
         background-color: #1e1e1e;    
+        
 }
 
-img {
-        height: 100px;
+#topsection {
+        margin-left: 2%;
 }
-    
+
+.profilepic {
+        height: 100px;
+        
+}
+
+.nametitle{
+        margin-top: 0;
+        margin-bottom: 20%px;
+}
+
 hr {
         background-color: darkolivegreen;
         border-style: none;
@@ -17,16 +28,15 @@ h1{
     color: azure;
     font-family: 'Courier New', Courier, monospace;
     font-size: 200%;
-    
-        
+           
 }
 
 p{
     color: #b5cea8;
     width: 95%;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Source Code pro', 'Courier New', Courier, monospace;
     margin: 2% 3% 2% 3%;
-    font-size: 110%;
+    
     
                    
 }
