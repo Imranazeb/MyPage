@@ -57,7 +57,7 @@ p{
         background-color: #0e639c;
         color: aliceblue;
         cursor: pointer;
-        transition: background-color 0.5s;        
+        transition: background-color 0.15s;        
 }
 
 .btn_covid:hover{
