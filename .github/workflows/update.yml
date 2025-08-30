@@ -1,0 +1,41 @@
+name: Run main.py and Commit Changes
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-main:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12" # adjust version if needed
+
+      # Install dependencies if you have requirements.txt
+      - name: Install dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      # Run main.py
+      - name: Run main.py
+        run: python main.py
+
+      # Commit and push changes
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Auto-update from main.py" || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
