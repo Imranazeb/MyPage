@@ -8,28 +8,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           persist-credentials: false
-          fetch-depth: 0
-          ref: master
+          fetch-depth: 0 # fetch full history so push works cleanly
+          ref: master # explicitly check out master branch
 
-      - name: Ensure we are on master branch
+      # Make sure we're on a real branch
+      - name: Ensure branch
         run: git checkout -B master
 
+      # Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.12"
 
+      # Install dependencies if you have requirements.txt
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      # Run main.py
       - name: Run main.py
         run: python main.py
 
+      # Commit and force push changes
       - name: Commit and Force Push changes
         run: |
           git config --global user.name "github-actions[bot]"
