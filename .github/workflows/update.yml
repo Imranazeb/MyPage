@@ -35,14 +35,26 @@ jobs:
       - name: Run main.py
         run: python main.py
 
+      # Debug Git state before committing
+      - name: Debug Git State
+        run: |
+          git status
+          git branch -vv
+          git log -3 --oneline
+
       # Commit and force push changes
       - name: Commit and Force Push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
+          git add .
           git commit -m "Auto-update from main.py" || echo "No changes to commit"
-          git pull --rebase origin master || true
+
+          # Final check
+          git status
+          git log -1 --oneline
+
+          # Push local master -> remote master
           git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git master:master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
