@@ -8,17 +8,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repo
+      # Checkout the branch that triggered the workflow
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
           persist-credentials: false
-          fetch-depth: 0 # fetch full history so push works cleanly
-          ref: master # explicitly check out master branch
-
-      # Make sure we're on a real branch
-      - name: Ensure branch
-        run: git checkout -B master
+          fetch-depth: 0
+          ref: ${{ github.ref_name }}
 
       # Set up Python
       - name: Set up Python
@@ -42,7 +38,7 @@ jobs:
           git branch -vv
           git log -3 --oneline
 
-      # Commit and force push changes
+      # Commit and push changes back to the same branch
       - name: Commit and Force Push changes
         run: |
           git config --global user.name "github-actions[bot]"
@@ -50,15 +46,9 @@ jobs:
           git add -A
           git commit -m "Auto-update from main.py" || echo "No changes to commit"
 
-          # make sure we’re on a proper branch that tracks origin/master
-          git checkout -B master origin/master
-
-          # debug
-          git status
-          git branch -vv
-          git log -2 --oneline
-
-          # push local master → remote master
-          git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git master:master
+          echo "Pushing to branch: ${GITHUB_REF_NAME}"
+          git push --force \
+            https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git \
+            ${GITHUB_REF_NAME}:${GITHUB_REF_NAME}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
