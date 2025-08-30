@@ -8,30 +8,28 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          persist-credentials: true
+          persist-credentials: false
           fetch-depth: 1
           ref: master
 
-      # Set up Python
+      - name: Ensure we are on master branch
+        run: git checkout -B master
+
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.12" # adjust version if needed
+          python-version: "3.12"
 
-      # Install dependencies if you have requirements.txt
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      # Run main.py
       - name: Run main.py
         run: python main.py
 
-      # Commit and force push changes
       - name: Commit and Force Push changes
         run: |
           git config --global user.name "github-actions[bot]"
@@ -39,6 +37,5 @@ jobs:
           git add -A
           git commit -m "Auto-update from main.py" || echo "No changes to commit"
           git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git master:master
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
