@@ -47,17 +47,18 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
+          git add -A
           git commit -m "Auto-update from main.py" || echo "No changes to commit"
 
-          # Final check
+          # make sure we’re on a proper branch that tracks origin/master
+          git checkout -B master origin/master
+
+          # debug
           git status
-          git log -1 --oneline
+          git branch -vv
+          git log -2 --oneline
 
-          # Pull latest remote changes (rebase to keep history clean)
-          git pull --rebase origin master || true
-
-          # Push local master -> remote master
+          # push local master → remote master
           git push --force https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git master:master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
