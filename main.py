@@ -1,3 +1,7 @@
+from datetime import datetime as dt
+time = dt.now().strftime("%Y-%m-%d %H:%M:%S")
+
+content = f"""
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,7 +52,7 @@
       <div class="column">
         <h2>Column One</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
+          This was written at time {time} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
           laoreet, sapien nec blandit gravida, urna justo porttitor nunc, vel
           luctus metus dui vel metus. Lorem ipsum dolor sit amet, consectetur
           adipiscing elit. Vivamus laoreet, sapien nec blandit gravida, urna
@@ -67,3 +71,9 @@
     </div>
   </body>
 </html>
+
+"""
+
+
+with open("index-staging.html", "w") as f:
+    f.write(content)
