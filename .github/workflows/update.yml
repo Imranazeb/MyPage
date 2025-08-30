@@ -6,6 +6,9 @@ on:
 jobs:
   run-main:
     runs-on: ubuntu-latest
+    env:
+      # Set any environment variables you need here
+      OPEN_API_KEY: ${{ secrets.OPEN_API_KEY }}
 
     steps:
       # Checkout the branch that triggered the workflow
