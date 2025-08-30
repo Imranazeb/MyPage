@@ -75,5 +75,5 @@ content = f"""
 """
 
 
-with open("index-staging.html", "w") as f:
+with open("index.html", "w") as f:
     f.write(content)
